@@ -29,10 +29,33 @@ wtseq <- "PPKEAPKKWKAPKGPKPTHRKNKNKLELGRAIKYARQKENAIEYLPDGEMRFTTDKHEANWVKLRSVTQE
 wtseq <- strsplit(wtseq, "")[[1]] 
 WT_csv$wt_sequence <- wtseq #creates WT seq column for labeling of x axis
 
+
+
 View(WT_csv)
 
-##creates the first heatmap from codon 2 to 80, as it's only 79 codons long and so needs to be dealt with separately
+#motifs, for reference: (343-351),(367,371),(387,390),(236,239),(264,266), (165-179)
 
+WT_csv_filtered <- WT_csv %>%
+  filter(Codon %in% c(343:351, 367:371, 387:390, 236:239, 264:266, 165:179)) #filters out just the motif codons
+View(WT_csv_filtered) #df that contains just the codons in the motif
+
+
+combined_labels <- paste(WT_csv_filtered$Codon, WT_csv_filtered$wt_sequence, sep = " ") #new object to label the motif heatmap
+
+#creates a heatmap of the GTPase motifs
+
+ggplot() +
+  geom_tile(data = WT_csv_filtered, aes(x = factor(Codon), y = factor(variable), fill= as.numeric(score))) +
+  scale_fill_gradient2(low= "brown", mid = "lightyellow", high= "darkgreen", midpoint = 1, name = "Fitness Scores") +
+  scale_x_discrete(labels = combined_labels) +
+  labs(x = "Position & WT AA", y = "Amino Acid", title = paste("Heatmap of Substitution Fitness Scores in LSG1 (Codons 2 to 80)")) +
+  theme(axis.text.y = element_text(size = 10),
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+        axis.title.x = element_text(margin = margin(t = 20)))  # Adjust the bottom margin of x-axis title
+
+
+
+##creates the first heatmap from codon 2 to 80, as it's only 79 codons long and so needs to be dealt with differently than with the function below
 ggplot() +
   geom_tile(data = WT_csv, aes(x = factor(Codon), y = factor(variable), fill= as.numeric(score))) +
   scale_fill_gradient2(low= "brown", mid = "lightyellow", high= "darkgreen", midpoint = 1, name = "Fitness Scores") +
