@@ -4,5 +4,4 @@ The input data in this case is Next Gen sequencing data, with reads of 75nt. Pro
 
 mut_count.py > output_cleaner.py > AA_freq.py > fitness.py & tolerance.py
 
-heatmap.R is for visualization of fitness scores in a heatmap
-LSG1 pymol.py is for mapping tolerance scores onto preexisting structure in pymol
+heatmap.R is for visualization of fitness scores in a heatmap, and LSG1 pymol.py is for mapping tolerance scores onto preexisting structure in pymol
