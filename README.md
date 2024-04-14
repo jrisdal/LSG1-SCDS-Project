@@ -1,4 +1,4 @@
-This set of programs were created by Jordan Risdal for completion of the Scientific Computation and Data Sciences Certificate at the University of Texas at Austin.
+This set of programs was created by Jordan Risdal for completion of the Scientific Computation and Data Sciences Certificate at the University of Texas at Austin.
 
 The input data in this case is Next Gen sequencing data, with reads of 75nt. Programs should be run in the following order in order to count mutational variation, clean output, calculate frequencies of amino acid substitutions, and obtain fitness scores for each substitution and tolerance scores for each residue
 
