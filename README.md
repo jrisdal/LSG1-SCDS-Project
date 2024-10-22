@@ -5,3 +5,5 @@ The input data in this case is sam files produced from bowtie2. Sam files are fr
 mut_count.py > output_cleaner.py > AA_freq.py > fitness.py & tolerance.py
 
 heatmap.R is for visualization of fitness scores in a heatmap, and LSG1 pymol.py is for mapping tolerance scores onto preexisting structure in pymol
+
+The .pdf file is the final research paper that summarizes the methodology, results, and process undertaken for this project.
